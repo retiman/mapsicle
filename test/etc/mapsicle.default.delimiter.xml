@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapsicle>
+  <datasource>
+      <property name="phptype" value="mysql"/>
+        <property name="url" value="localhost"/>
+    <property name="database" value="test"/>
+        <property name="username" value="mapsicle"/>
+        <property name="password" value="mapsicle"/>
+    </datasource>
+  <select id="Customer.findById#">
+    <![CDATA[
+      select * from customer where id = #id#
+    ]]>
+  </select>
+  <select id="Customer.findById!" delimiter="!">
+    <![CDATA[
+      select * from customer where id = !id!
+    ]]>
+  </select>
+</mapsicle>

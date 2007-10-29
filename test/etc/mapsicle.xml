@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapsicle>
+  <datasource>
+    <property name="phptype" value="mysql"/>
+    <property name="url" value="localhost"/>
+    <property name="database" value="test"/>
+    <property name="username" value="mapsicle"/>
+    <property name="password" value="mapsicle"/>
+  </datasource>
+  <query id="Test.createTable">
+    create table Test (
+      id int(4),
+      primary key(id)
+    )
+  </query>
+  <query id="Test.dropTable">
+    drop table Test
+  </query>
+  <insert id="Customer.create" delimiter="#">
+    insert into customer
+    values (#id#, #first#, #last#, #email#);
+  </insert>
+  <select id="Customer.findAll" delimiter="#">
+    select id             as id,
+      cust_first_name     as first,
+      cust_last_name      as last,
+      cust_email          as email
+    from customer
+  </select>
+  <select id="Customer.findById" delimiter="#">
+    select id             as id,
+      cust_first_name     as first,
+      cust_last_name      as last,
+      cust_email          as email
+    from customer
+    where id              = #id#
+  </select>
+  <select id="Customer.findByLastName" delimiter="#">
+    select *
+    from customer
+    where cust_last_name  = #last#
+  </select>
+  <update id="Customer.updateById" delimiter="#">
+    update customer
+    set cust_first_name   = #first#,
+    cust_last_name        = #last#,
+    cust_email            = #email#
+    where id              = #id#
+  </update>
+  <delete id="Customer.removeById" delimiter="#">
+    delete from customer where id = #id#
+  </delete>
+</mapsicle>
+    
+        
