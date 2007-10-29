@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+  Mapsicle - Mapsicle - SQL maps for PHP!
+
+  This is a phing (http://phing.info) build file; don't try to run it with ant
+  or anything.
+//-->
+<project name="Mapsicle" basedir="." default="dist">
+  <property name="build.dir" value="build"/>
+  <property name="dist.dir" value="dist"/>
+  <property name="doc.dir" value="doc"/>
+  <property name="src.dir" value="src"/>
+  <property name="project.name" value="mapsicle"/>
+  <property name="project.version" value="1.09.01a"/>
+  <property name="phpdoc.cmd" value="phpdoc.bat"/>
+  <property name="phpdoc.ignore" value="*Test.php,Customer.php,TestRunner.php"/>
+  <property name="phpdoc.doc" value="."/>
+  <property name="phpdoc.title" value="Mapsicle Documentation"/>
+  <property name="phpdoc.package" value="Mapsicle"/>
+  <property name="phpdoc.category" value="Database"/>
+
+  <target name="clean"
+      description="Deletes build, dist, and doc directories">
+    <delete dir="${build.dir}" 
+        includeemptydirs="true" 
+        verbose="true"
+        failonerror="true"/>
+    <delete dir="${dist.dir}" 
+        includeemptydirs="true" 
+        verbose="true"
+        failonerror="true"/>
+    <delete dir="${doc.dir}" 
+        includeemptydirs="true" 
+        verbose="true"
+        failonerror="true"/>
+  </target>
+
+  <target name="prepare" 
+      depends="clean"
+      description="Makes necessary project directories">
+    <echo>Be prepared!</echo>
+    <mkdir dir="dist"/>
+    <mkdir dir="build"/>
+    <mkdir dir="doc"/>
+  </target>
+
+  <target name="phpdoc" 
+      description="Generate source documentation">
+    <exec command="${phpdoc.cmd} -i ${phpdoc.ignore} -d ${phpdoc.doc} -t ${doc.dir} -ti ${phpdoc.title} -dn ${phpdoc.package} -dc ${phpdoc.category}"
+        dir="."/>
+  </target>
+
+  <target name="build" 
+      depends="clean, prepare"
+      description="Copy source files to build folder">
+    <copy todir="${build.dir}">
+      <fileset dir="${src.dir}">
+        <include name="**/*.php"/>
+        <include name="**/*.xml"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="dist"
+      depends="clean, prepare, phpdoc, build"
+      description="Creates a distribution of this project">
+    <tar destfile="${dist.dir}/${project.name}-${project.version}.tar.gz"
+        compression="gzip">
+      <fileset dir="${build.dir}">
+        <include name="**/**"/>
+      </fileset>
+    </tar>
+    <tar destfile="${dist.dir}/${project.name}-${project.version}-doc.tar.gz"
+        compression="gzip">
+      <fileset dir="${doc.dir}">
+        <include name="**/**"/>
+      </fileset>
+    </tar>
+  </target>
+</project>
