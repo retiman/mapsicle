@@ -43,6 +43,7 @@ Next, you must create a mapsicle.xml file and put it anywhere. This file contain
 Note that you may have <insert>, <update>, and <delete> elements as well, for statements of those types.  Your id can be any string, but it's customary to use the object name followed by the operation name.  The delimiter tells [[Mapsicle Mapsicle]] that the literal between the delimiter is a named parameter. 
 
 Finally, build a mapsicle object and begin using it:
+
 [code]
 $sqlmap   =& MapsicleFactory::createMapsicle("mapsicle.xml");
 $customer =  $sqlmap->queryForObject("Customer.findById", 
