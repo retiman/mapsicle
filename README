@@ -46,10 +46,9 @@ Finally, build a mapsicle object and begin using it:
 
 [code]
 $sqlmap   =& MapsicleFactory::createMapsicle("mapsicle.xml");
-$customer =  $sqlmap->queryForObject("Customer.findById", 
-  array("id" => 3));
-echo "Customer ID: " . $customer->id . "<br/>";
+$customer =  $sqlmap->queryForObject("Customer.findById", array("id" => 3));
+echo "Customer ID: "           . $customer->id . "<br/>";
 echo "Customer's first name: " . $customer->firstName . "<br/>";
-echo "Customer's last name: " . $customer->lastName . "<br/>";
-echo "Customer's email: " . $customer->email . "<br/>";
+echo "Customer's last name: "  . $customer->lastName . "<br/>";
+echo "Customer's email: "      . $customer->email . "<br/>";
 [/code]
