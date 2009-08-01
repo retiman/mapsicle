@@ -2,7 +2,6 @@ INSTALLATION
 Build it with Phing first, or download the tarball here:
 
 http://www.lousycoder.com/files/mapsicle/mapsicle-1.09.01a.tar.gz
-http://www.lousycoder.com/files/mapsicle/mapsicle-1.09.01a-doc.tar.gz
 
 The archive can be uncompressed anywhere, but it is recommended to place in a common library folder.  For example, if you have several classes and PHP scripts meant for inclusion in other scripts in a folder called /home/johndoe/johndoe.com/includes, it would be safe to uncompress Mapsicle there.  Alternatively, you may wish to decompress Mapsicle in your PEAR library folder (if you have access to do so).
 
