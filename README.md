@@ -21,9 +21,17 @@ Note: The final version of Mapsicle is 1.09.01a; it is no longer being developed
 
 INSTALLATION
 ============
-The first step is to download and install the Mapsicle package. You can simply unzip
-it into a directory that is in your `include_path`, or add this code to any script
-that uses Mapsicle (adding it to the top of the script is a good idea):
+Mapsicle depends on the following PEAR packages, so make sure you have them
+installed.  Either get your system administrator to install them, or follow a guide
+to install PEAR on a shared host.
+
+* Config v1.10.6 (http://pear.php.net/package/Config)
+* DB v1.7.6 (http://pear.php.net/package/DB)
+* PEAR v1.4.6 (http://pear.php.net/package/PEAR)
+
+You can build the library with Phing, or you can just copy the contents of the `src`
+directory somewhere in your `include_path`.  Add this code to any script that uses
+Mapsicle:
 
     ini_set('include_path', '/path/to/Mapsicle'
       . PATH_SEPARATOR
