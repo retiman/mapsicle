@@ -17,7 +17,7 @@ need to work with result sets or manage database connections; all the configurat
 is done through an XML file. You may use Mapsicle to execute update, delete, and
 insert statements as well.
 
-Note: The final version of Mapsicle is 1.09.01a; it is no longer being developed.
+Note: This project is no longer being developed.
 
 INSTALLATION
 ============

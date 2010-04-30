@@ -11,7 +11,7 @@
   <property name="doc.dir" value="doc"/>
   <property name="src.dir" value="src"/>
   <property name="project.name" value="mapsicle"/>
-  <property name="project.version" value="1.09.01a"/>
+  <property name="project.version" value="1.09.01b"/>
   <property name="phpdoc.cmd" value="phpdoc.bat"/>
   <property name="phpdoc.ignore" value="*Test.php,Customer.php,TestRunner.php"/>
   <property name="phpdoc.doc" value="."/>
