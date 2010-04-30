@@ -25,43 +25,47 @@ The first step is to download and install the Mapsicle package. You can simply u
 it into a directory that is in your `include_path`, or add this code to any script
 that uses Mapsicle (adding it to the top of the script is a good idea):
 
-  ini_set('include_path', '/path/to/Mapsicle'
-    . PATH_SEPARATOR
-    . ini_get('include_path'));
-  require_once('Mapsicle.php');
+    ini_set('include_path', '/path/to/Mapsicle'
+      . PATH_SEPARATOR
+      . ini_get('include_path'));
+    require_once('Mapsicle.php');
 
 Next, you must create a `mapsicle.xml` file and put it anywhere. This file contains
 your SQL maps as well as your database configuration. Here's a sample file:
 
-  <?xml version="1.0"?>
-  <mapsicle>
-    <datasource>
-      <property name="phptype"  value="mysql"/>
-      <property name="hostspec" value="localhost"/>
-      <property name="database" value="test"/>
-      <property name="username" value="mapsicle"/>
-      <property name="password" value="mapsicle"/>
-    </datasource>
-    <select id="Customer.findById" delimiter="#">
-      select  id          as id,
-        cust_first        as firstName,
-        cust_last         as lastName,
-        cust_email        as email
-      from Customer
-        where   id        = #id#
-    </select>
-  </mapsicle>
+    <?xml version="1.0"?>
+    <mapsicle>
+      <datasource>
+        <property name="phptype"  value="mysql"/>
+        <property name="hostspec" value="localhost"/>
+        <property name="database" value="test"/>
+        <property name="username" value="mapsicle"/>
+        <property name="password" value="mapsicle"/>
+      </datasource>
+      <select id="Customer.findById" delimiter="#">
+        select  id          as id,
+          cust_first        as firstName,
+          cust_last         as lastName,
+          cust_email        as email
+        from Customer
+          where   id        = #id#
+      </select>
+    </mapsicle>
 
 Note that you may have `<insert>`, `<update>`, and `<delete>` elements as well, for
 statements of those types.  Your id can be any string, but it's customary to use the
 object name followed by the operation name.  The delimiter tells Mapsicle that the
 literal between the delimiter is a named parameter.
 
-Finally, build a mapsicle object and begin using it:
+USAGE
+=====
+Just build a mapsicle object and begin using it:
 
-  $sqlmap   =& MapsicleFactory::createMapsicle("mapsicle.xml");
-  $customer =  $sqlmap->queryForObject("Customer.findById", array("id" => 3));
-  echo "Customer ID: "           . $customer->id . "<br/>";
-  echo "Customer's first name: " . $customer->firstName . "<br/>";
-  echo "Customer's last name: "  . $customer->lastName . "<br/>";
-  echo "Customer's email: "      . $customer->email . "<br/>";
+    $sqlmap   =& MapsicleFactory::createMapsicle("mapsicle.xml");
+    $customer =  $sqlmap->queryForObject("Customer.findById", array("id" => 3));
+    echo "Customer ID: "           . $customer->id . "<br/>";
+    echo "Customer's first name: " . $customer->firstName . "<br/>";
+    echo "Customer's last name: "  . $customer->lastName . "<br/>";
+    echo "Customer's email: "      . $customer->email . "<br/>";
+
+See the USAGE docs for more information.
