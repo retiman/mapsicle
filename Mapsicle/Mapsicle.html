@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Mapsicle</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Mapsicle</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">A simple SQL mapper for PHP.  You can define SQL statements and map them to  an id in a configuration file called 'mapsicle.xml' (or name it whatever  you want, and pass it in to MapsicleFactory::createMapsicle).</p>
+<p class="description"><p>For example, suppose you had a simple query:  <div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-id">select&nbsp;</span>*&nbsp;<span class="src-id">from&nbsp;customers&nbsp;where&nbsp;customer_name&nbsp;</span>=&nbsp;?</div></li>
+</ol></div></p><p>Simply define this query in your mapsicle.cfg.xml as:  <div class="src-code"><ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">select&nbsp;id</span>=<span class="src-str">&quot;Customers.byName&quot;</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">select&nbsp;cust_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-id">name</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">cust_addr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-id">address</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">cust_city&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-id">city</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">cust_state&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-id">state</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">cust_zip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-id">zip</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">cust_email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-id">email</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">from&nbsp;customers&nbsp;where&nbsp;customer_name&nbsp;</span>=&nbsp;<span class="src-comm">#name#</span></div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">select</span>&gt;</div></li>
+</ol></div></p><p>In this case, #name# is a named parameter; you will call one of Mapsicle's  queryFor methods and pass in both the id and parameters.  For example:  <div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-var">$mapsicle&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-id"><a href="../Mapsicle/MapsicleFactory.html">MapsicleFactory</a></span><span class="src-sym">::</span><a href="../Mapsicle/MapsicleFactory.html#methodbuildMapsicle">buildMapsicle</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-id">PEAR</span><span class="src-sym">::</span><span class="src-id">isError</span><span class="src-sym">(</span><span class="src-var">$mapsicle</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">die</span><span class="src-sym">(</span><span class="src-var">$mapsicle</span><span class="src-sym">-&gt;</span><span class="src-id">getMessage</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$params&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'name'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'John&nbsp;Doe'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$customer&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-var">$mapsicle</span><span class="src-sym">-&gt;</span><a href="../Mapsicle/Mapsicle.html#methodqueryForObject">queryForObject</a><span class="src-sym">(</span><span class="src-str">'Customer.byName'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$params</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;print&nbsp;<span class="src-var">$customer</span><span class="src-sym">-&gt;</span><span class="src-id">email</span><span class="src-sym">;</span></div></li>
+</ol></div></p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Min Huang</li>
+				<li><span class="field">since:</span> Class available since Release 1.0</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_src---Mapsicle.php.html">/src/Mapsicle.php</a> (line <span class="field">85</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																								<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$db" title="details" class="var-name">$db</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$mappings" title="details" class="var-name">$mappings</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$sql" title="details" class="var-name">$sql</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																				
+												<div class="method-definition">
+											<span class="method-result">Mapsicle</span>
+										<a href="#Mapsicle" title="details" class="method-name">Mapsicle</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$db</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$mappings</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#create" title="details" class="method-name">create</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$configFile</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#delete" title="details" class="method-name">delete</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#execute" title="details" class="method-name">execute</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getLastQuery" title="details" class="method-name">getLastQuery</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#getQuery" title="details" class="method-name">getQuery</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#insert" title="details" class="method-name">insert</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#queryForList" title="details" class="method-name">queryForList</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#queryForMap" title="details" class="method-name">queryForMap</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#queryForObject" title="details" class="method-name">queryForObject</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#replaceParams" title="details" class="method-name">replaceParams</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$mapping</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#update" title="details" class="method-name">update</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$db" id="$db"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$db</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">95</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> The database connection.  Mapsicle uses PEAR::DB for  database connectivity.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$mappings" id="$mappings"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$mappings</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">89</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> An array of MapsicleMapping objects.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$sql" id="$sql"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$sql</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">101</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> This is the last query executed, in case you want to use  it for debugging.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="methodMapsicle" id="Mapsicle"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor Mapsicle</span> (line <span class="line-number">109</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Initialize the Mapsicle with a database and mappings.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">Mapsicle</span>
+		<span class="method-name">
+			Mapsicle
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$db</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$mappings</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$db</span><span class="var-description">: db A PEAR_DB object.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$mappings</span><span class="var-description">: mappings A hashmap of id to MapsicleMapping objects.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcreate" id="create"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">create</span> (line <span class="line-number">120</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This function is an alias of MapsicleFactory::createMapsicle.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			create
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$configFile</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$configFile</span><span class="var-description">: configFile The location of the Mapsicle configuration  file.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddelete" id="delete"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">delete</span> (line <span class="line-number">370</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Execute a delete statement.</p>
+<p class="description"><p>The parameters may either by a hashmap of parameter name to parameter  values, or an object with the parameters as variable names.  All  parameters must be strings.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns true if the operation was successful, or or  PEAR_Error if an error occured  while trying to execute the query.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			delete
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: id The ID of the mapping.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$parameters</span><span class="var-description">: parameters The query parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodexecute" id="execute"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">execute</span> (line <span class="line-number">406</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Execute a SQL statement.  You may use this for update or delete  statements if you wish, but it is convenient to use this method  for executing SQL statements such as <div class="src-code"><ol><li><div class="src-line"><span class="src-id">ALTER&nbsp;TABLE&nbsp;</span>...</div></li>
+</ol></div>  or <div class="src-code"><ol><li><div class="src-line"><span class="src-id">CREATE&nbsp;TABLE</span></div></li>
+</ol></div>, etc.</p>
+<p class="description"><p>The parameters may either by a hashmap of parameter name to parameter  values, or an object with the parameters as variable names.  All  parameters must be strings.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns true if the operation was successful, or or  PEAR_Error if an error occured  while trying to execute the query.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			execute
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: id The ID of the mapping.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$parameters</span><span class="var-description">: parameters The query parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetLastQuery" id="getLastQuery"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getLastQuery</span> (line <span class="line-number">130</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the last query executed (with named parameters replaced) in  case you want to use it for debugging purposes.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The last executed query.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getLastQuery
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetQuery" id="getQuery"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getQuery</span> (line <span class="line-number">143</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Don't execute any SQL query, but return the mapped query with named  parameters replaced instead.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The mapped query with named parameters replaced, or  PEAR_Error if the query wasn't found.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getQuery
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: id The ID of the mapping.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$parameters</span><span class="var-description">: parameters The query parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodinsert" id="insert"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">insert</span> (line <span class="line-number">290</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Execute an insert statement.  You will get back the last insert id if  your database supports it.  If you made the insert and specified the  primary key directly, please note that you won't get the correct last  insert id back.</p>
+<p class="description"><p>The parameters may either by a hashmap of parameter name to parameter  values, or an object with the parameters as variable names.  All  parameters must be strings.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The last insert id if supported or null if not, or  PEAR_Error if an error occured  while trying to execute the query.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			insert
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: id The ID of the mapping.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$parameters</span><span class="var-description">: parameters The query parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodqueryForList" id="queryForList"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">queryForList</span> (line <span class="line-number">203</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Execute the SQL query mapped by the argument id with the given  parameters.  If there are no parameters, you may leave them null.</p>
+<p class="description"><p>Returns an array of DB_row objects if any are found by the query;  otherwise, an empty array is returned.</p><p>The parameters may either by a hashmap of parameter name to parameter  values, or an object with the parameters as variable names.  All  parameters must be strings.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of DB_row objects, or PEAR_Error if an error  occured  while trying to execute the query.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			queryForList
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: id The ID of the mapping.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$parameters</span><span class="var-description">: parameters The query parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodqueryForMap" id="queryForMap"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">queryForMap</span> (line <span class="line-number">247</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Execute the SQL query mapped by the argument id with the given  parameters.  If there are no parameters, you may leave them null.</p>
+<p class="description"><p>Returns an array of hashmaps, with each field in the result row mapped  to that field's value in the row.</p><p>The parameters may either by a hashmap of parameter name to parameter  values, or an object with the parameters as variable names.  All  parameters must be strings.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of hashmaps, or PEAR_Error if an error occured  while trying to execute the query.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			queryForMap
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: id The ID of the mapping.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$parameters</span><span class="var-description">: parameters The query parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodqueryForObject" id="queryForObject"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">queryForObject</span> (line <span class="line-number">173</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Execute the SQL query mapped by the argument id with the given  parameters.  If there are no parameters, you may leave them null.</p>
+<p class="description"><p>Only one object will be returned, even if there are multiple objects!</p><p>The parameters may either by a hashmap of parameter name to parameter  values, or an object with the parameters as variable names.  All  parameters must be strings.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A DB_row object if one was found, null if no object was  found, and PEAR_Error if an error occured while trying to execute the  query.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			queryForObject
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: id The ID of the mapping.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$parameters</span><span class="var-description">: parameters The query parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodreplaceParams" id="replaceParams"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">replaceParams</span> (line <span class="line-number">441</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Replaces named parameters in a mapped SQL query.</p>
+<p class="description"><p>Because PHP does not have support for overloaded methods, here's our  hack of a solution to call the right method depending on the type of the  argument.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A SQL query with the arguments replaced and ready to be  executed against the database, or a PEAR_Error if something went wrong  while trying to replace parameters.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			replaceParams
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$mapping</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$mapping</span><span class="var-description">: mapping The MapsicleMapping object that contains the SQL  query.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$parameters</span><span class="var-description">: parameters The query parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodupdate" id="update"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">update</span> (line <span class="line-number">334</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Execute an update statement.</p>
+<p class="description"><p>The parameters may either by a hashmap of parameter name to parameter  values, or an object with the parameters as variable names.  All  parameters must be strings.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true if the operation was successful, or or PEAR_Error if  an error occured  while trying to execute the query.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			update
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$parameters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: id The ID of the mapping.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$parameters</span><span class="var-description">: parameters The query parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Tue, 28 Sep 2010 02:42:26 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

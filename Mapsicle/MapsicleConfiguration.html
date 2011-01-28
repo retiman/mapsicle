@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class MapsicleConfiguration</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class MapsicleConfiguration</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">A class for configuring a Mapsicle object from an XML configuration  file.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Min Huang</li>
+				<li><span class="field">since:</span> File available since Release 1.0</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_src---Mapsicle---MapsicleConfiguration.php.html">/src/Mapsicle/MapsicleConfiguration.php</a> (line <span class="field">33</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																								<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$db" title="details" class="var-name">$db</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$mappings" title="details" class="var-name">$mappings</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$root" title="details" class="var-name">$root</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																												
+												<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#buildMapsicle" title="details" class="method-name">buildMapsicle</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#configure" title="details" class="method-name">configure</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$configFile</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#getConnection" title="details" class="method-name">getConnection</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$config</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#getMapping" title="details" class="method-name">getMapping</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$element</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#loadConfiguration" title="details" class="method-name">loadConfiguration</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$configFile</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#loadMappings" title="details" class="method-name">loadMappings</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#loadMappingsByType" title="details" class="method-name">loadMappingsByType</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$db" id="$db"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$db</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">47</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> The database connection.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$mappings" id="$mappings"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$mappings</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">42</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> An array of MapsicleMapping objects.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$root" id="$root"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$root</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">37</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> The root element of the configuration file.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="methodbuildMapsicle" id="buildMapsicle"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">buildMapsicle</span> (line <span class="line-number">272</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Build a Mapsicle object from this MapsicleConfiguration object.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A Mapsicle object that was configured from this  MapsicleConfiguration object or PEAR_Error if Mapsicle wasn't  configured correctly.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			buildMapsicle
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodconfigure" id="configure"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">configure</span> (line <span class="line-number">58</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Configure the SQL map class with the file given.  If you don't specify  a file, it will assume that SQLMAP_CONFIG_RESOURCE is the filename.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A PEAR_Error if an error occurred while reading the  configuration file.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			configure
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$configFile</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$configFile</span><span class="var-description">: configFile The name of the configuration file or PEAR_Error  if the SQL map client class couldn't be configured.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetConnection" id="getConnection"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getConnection</span> (line <span class="line-number">105</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Create a PEAR_DB database connection from the connection parameters  given.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A PEAR_DB object or PEAR_Error if the database connection  couldn't be established.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getConnection
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$config</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$config</span><span class="var-description">: config A configuration array for a PEAR_DB connection.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetMapping" id="getMapping"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getMapping</span> (line <span class="line-number">238</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Create a MapsicleMapping object from a parsed XML element and the  sql statement type.  The XML element should be an array with keys '@'  and '#' if parsed by the PEAR_Config class.</p>
+<p class="description"><p>i.e. The array should look like this:  <div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'@'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'id'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'MapID'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'delimiter'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'MapDelimiter'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'#'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'select&nbsp;*&nbsp;from&nbsp;customer'</span><span class="src-sym">)</span></div></li>
+</ol></div></p><p>The type is either 'select', 'update', 'insert', or 'delete'.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A MapsicleMapping object or a PEAR_Error if the element  wasn't defined correctly.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getMapping
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$element</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$element</span><span class="var-description">: element The XML element that defines this mapping.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$type</span><span class="var-description">: type The type of SQL statement in the mapping.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodloadConfiguration" id="loadConfiguration"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">loadConfiguration</span> (line <span class="line-number">87</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Read the configuration file, parse its XML contents, and return the  result as an array.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The parsed configuration file as an array or PEAR_Error  if the configuration file could not be read.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			loadConfiguration
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$configFile</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$configFile</span><span class="var-description">: configFile The name of the configuration file.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodloadMappings" id="loadMappings"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">loadMappings</span> (line <span class="line-number">145</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Load mappings from the parsed XML configuration data.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> No return value if no errors; PEAR_Error otherwise.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			loadMappings
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodloadMappingsByType" id="loadMappingsByType"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">loadMappingsByType</span> (line <span class="line-number">180</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Load mappings by type from the parsed XML configuration data.  By type,  we are talking about 'select', 'update', 'insert', or 'delete'.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A PEAR_Error if an  error occurs while loading any of  these mappings.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			loadMappingsByType
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$type</span><span class="var-description">: type The type of SQL mappings to load.</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Tue, 28 Sep 2010 02:42:27 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
